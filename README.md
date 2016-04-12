@@ -72,9 +72,9 @@ barplot(table(filings$Constructor$name), col="red", main = "Number of cars in th
 **End code**
 
 
-![alt tag](/pics/number_of_cars_per_races.jpeg)
+![alt tag](/pics/carInRaces.JPG)
 
-This plot shows the cars type distribution across all races. As we can see, German, Brazilian and Italian cars are most used in the races. The reason is that cars made in those countires often tend to be reliable, with high engine perfromance, which are great for car races. 
+This plot shows the cars type distribution across all races. As we can see, Mercedes (German), Ferrari (Italia) and Williams(UK) cars are most used in the races. The reason is that cars made in those countires often tend to be reliable, with high engine perfromance, which are great for car races. 
 
 **Code**
 
