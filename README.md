@@ -16,7 +16,7 @@ Main Columns in the datatable:
 
 library("jsonlite", lib.loc="~/R/win-library/3.2")
 
-store all pages in a list first
+//store all pages in a list first
 
 baseurl <- "http://ergast.com/api/f1/"
 
@@ -39,7 +39,7 @@ for(i in 1990:2015){
 }
 
 
-combine all into one
+//combine all into one
 
 filings <- rbind.pages(pages)
 
@@ -49,7 +49,7 @@ filings <- rbind.pages(pages)
 
 First, we load the libaries that we need in order to get and parse the json file.
 Becuase the information from one race wasn't enough, we had to retrieve information from 20 races (see loop).
-Finally, we combibe the lists into one big dataframe. 
+Finally, we combine the lists into one big dataframe. 
 
 
 
