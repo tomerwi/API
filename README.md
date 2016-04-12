@@ -51,11 +51,16 @@ First, we load the libaries that we need in order to get and parse the json file
 Becuase the information from one race wasn't enough, we had to retrieve information from 20 races (see loop).
 Finally, we combine the lists into one big dataframe. 
 
+**Code**
+
+barplot(table(filings$Driver$nationality), col="wheat", main = "Number of drivers in each country")
+
+**End of code**
 
 
 
 
-![alt tag](/pic/number_of_cars_per_races.jpeg)
+![alt tag](/pics/number_of_driver_per_counrty.jpeg)
 
 The photo shows the crimes distribution across Sacremento. 
 the districts were divided crimes - north and south. district number bigger then 3 are in the north while the rest in the south.
