@@ -200,7 +200,7 @@ plot(importance)
 
 **End of code**
 
-![alt tag](/pic/data_importance.JPG)
+![alt tag](/pics/data_importance.JPG)
 
 The photo shows the relevance of each coloumn to the class attribute, which is the district number. 
 We chose the column beat, grid, crimedescr, ucr_ncic_code. The other attribute in the table were not taken becouse they were too specific for each record. 
