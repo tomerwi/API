@@ -122,56 +122,85 @@ for(i in 1:604)
 
 **End of code**
 
-In the code above, we coverted the nominal values of the position to dicrete values (High, Low, Medium). 
+In the code above, we converted the nominal values of the position to discrete values (High, Low, Medium).
+
 High - positions between 1 to 5.
+
 Medium - positions between 6 to 15.
+
 Low - positions between 16 to 20.
+
 
 We needed to perfom this operation for further analysis of the data. 
 
 
+
 **Code**
 
+
 library("mlbench")
+
 library("caret")
+
 
 
 set.seed(604)
 
+
 number <- filings$number
+
 points <- filings$points
+
 Driver_nationality <- filings$Driver$nationality
+
 Constructor_name <- filings$Constructor$name
+
 position <- filings$position
+
 filings <- data.frame(number,points,Driver_nationality,Constructor_name,position)
+
 
 
 filings$position<-as.factor(filings$position)
 
+
 filings$number<-as.numeric(filings$number)
+
 filings$points<-as.numeric(filings$points)
+
 filings$Driver_nationality<-as.numeric(filings$Driver_nationality)
+
 filings$Constructor_name<-as.numeric(filings$Constructor_name)
+
 
 
 TrainData <- filings[,1:4]
 
+
 TrainClasses <- filings[,5]
+
 TrainClasses<-as.factor(TrainClasses)
 
 
+
 control<-trainControl(method="repeatedcv",number=10,repeats=3)
+
 library("e1071")
+
 model<-train(as.data.frame(TrainData),TrainClasses,method = "lvq",preProcess = "scale",trControl =control)
+
 library("pROC")
+
 importance<-varImp(model,scale=FALSE)
-print(importance)
+
+
 plot(importance)
+
 
 
 **End of code**
 
-![alt tag](/pic/importance_of_data.jpg)
+![alt tag](/pic/data_importance.JPG)
 
 The photo shows the relevance of each coloumn to the class attribute, which is the district number. 
 We chose the column beat, grid, crimedescr, ucr_ncic_code. The other attribute in the table were not taken becouse they were too specific for each record. 
