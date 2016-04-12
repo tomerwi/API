@@ -200,15 +200,15 @@ plot(importance)
 
 **End of code**
 
+
 ![alt tag](/pics/data_importance.JPG)
 
-The photo shows the relevance of each coloumn to the class attribute, which is the district number. 
-We chose the column beat, grid, crimedescr, ucr_ncic_code. The other attribute in the table were not taken becouse they were too specific for each record. 
-We can see that beat and grid are the most relevant for the district number. It makes sense beacause they describe the area of the districts. 
+The code above are used to see each column contribution to the class coluum (position).
+The column "points", "number" and "driver_nationality" have a significant influence on the position
+
 
 
 **Conclusions:**
 
-1. Looking for a more up-to-date dataset that contains recent crimes, which can be used for comparison between years.
-2. Check for other causes for crimes except economical conditions in the population.
-3. Advice and warning the police about areas with crimes that occur more often
+1. Recommendations for drivers to use German, Italian and UK cars in order to get higher positions and win the races.
+2. Get data about fuel consumptions of the cars and see if it worth buying them. 
