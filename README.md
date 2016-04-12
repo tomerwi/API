@@ -2,31 +2,42 @@
 
 
  
-**This dataset contains information about crimes commited in Sacramento in 2006. This information are available from Sacramento police department. **
+**This dataset contains information about car races between the year 1995 and 2015. **
 
-crimes<-read.csv("C:/Users/דודו/Downloads/SacramentocrimeJanuary2006.csv")
-
-This command gets the data from the CSV file and puts it in a data frame.
 
 Main Columns in the datatable:
-- District - Number of the district where the crime commited
-- Beat - Area inside the district
-- grid - sub-area in the district
-- Crime description - crime type
-- Latitude & Longtitude - Location parameters, which is used to show the location of the crime in the map
-- ucr_ncic_code - Code which is given by the police to describe the crime severity.
+- number - id of the driver in the races.
+- Points - score for a driver in a specific race
+- Position - position for driver in a specific race (1st,2st and so...)
+- Driver nationality - Country birth of the driver (numeric data)
+- Constructor name - Technical assistant of the driver
 
 **Code**
 
-library("ggmap")
+library("jsonlite", lib.loc="~/R/win-library/3.2")
+#store all pages in a list first
+baseurl <- "http://ergast.com/api/f1/"
+baseurl2 <- "/1/results.json"
+pages <- list()
+for(i in 1990:2015){
+  message(paste0(baseurl, i, baseurl2))
+  mydata <- fromJSON(paste0(baseurl, i, baseurl2))
+  mydata<-mydata$MRData$RaceTable$Races$Results[[1]]
+  message("Retrieving page", i)
+  pages[[i+1]] <- mydata
+}
 
-library("ggplot2")
-
-map <- get_map(location = c(lon = mean(crimes$longitude), lat = mean(crimes$latitude)), zoom = 15,  maptype = "satellite", scale =  2) 
-
-ggmap(map) +  geom_point(data = crimes, aes(x = longitude, y = latitude, colour = ifelse(district>3,F,T), alpha = 0.1), size = 10, shape = 10) +  guides(fill=FALSE, alpha=FALSE, size=FALSE) 
+#combine all into one
+filings <- rbind.pages(pages)
 
 **End of code**
+
+First, we load the libaries that we need in order to get and parse the json file.
+Becuase the information from one race wasn't enough, we had to retrieve information from 20 races (see loop).
+Finally, we combibe the lists into one big dataframe. 
+
+
+
 
 
 ![alt tag](/pic/North_vs_South.jpg)
