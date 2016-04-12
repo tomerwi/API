@@ -55,7 +55,7 @@ Finally, we combine the lists into one big dataframe.
 
 
 
-![alt tag](/pic/number_of_cars_per_races.jpg)
+![alt tag](/pic/number_of_cars_per_races.jpeg)
 
 The photo shows the crimes distribution across Sacremento. 
 the districts were divided crimes - north and south. district number bigger then 3 are in the north while the rest in the south.
