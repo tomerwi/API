@@ -62,18 +62,17 @@ barplot(table(filings$Driver$nationality), col="wheat", main = "Number of driver
 
 ![alt tag](/pics/number_of_driver_per_counrty.jpeg)
 
-The photo shows the crimes distribution across Sacremento. 
-the districts were divided crimes - north and south. district number bigger then 3 are in the north while the rest in the south.
-As we can see, more crimes were commited in the south (red color). It is known that south Sacramento is considred less reacher area then the north, which can describe the fact about the crimes distribution. 
+The photo shows the distribution of driver across countries. 
+---Hirtut here---
 
 **Code**
 
-barplot(table(crimes$district),col = "wheat",main = "number of crimes in each district")
+barplot(table(filings$Constructor$name), col="red", main = "Number of cars in the races")
 
 **End code**
 
 
-![alt tag](/pic/number_of_crimes.jpg)
+![alt tag](/pics/number_of_cars_per_races.jpeg)
 
 This plot shows the number of crimes in each district. As we can see, district 3 has the highest crimes number. It is located in south Sacramento, which has more crimes.
 
