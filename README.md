@@ -1,4 +1,4 @@
-# CSV
+# API
 
 
  
@@ -15,22 +15,37 @@ Main Columns in the datatable:
 **Code**
 
 library("jsonlite", lib.loc="~/R/win-library/3.2")
+
 #store all pages in a list first
+
 baseurl <- "http://ergast.com/api/f1/"
+
 baseurl2 <- "/1/results.json"
+
 pages <- list()
+
 for(i in 1990:2015){
+
   message(paste0(baseurl, i, baseurl2))
+  
   mydata <- fromJSON(paste0(baseurl, i, baseurl2))
+  
   mydata<-mydata$MRData$RaceTable$Races$Results[[1]]
+  
   message("Retrieving page", i)
+  
   pages[[i+1]] <- mydata
+  
 }
 
+
 #combine all into one
+
 filings <- rbind.pages(pages)
 
+
 **End of code**
+
 
 First, we load the libaries that we need in order to get and parse the json file.
 Becuase the information from one race wasn't enough, we had to retrieve information from 20 races (see loop).
