@@ -74,31 +74,95 @@ barplot(table(filings$Constructor$name), col="red", main = "Number of cars in th
 
 ![alt tag](/pics/number_of_cars_per_races.jpeg)
 
-This plot shows the number of crimes in each district. As we can see, district 3 has the highest crimes number. It is located in south Sacramento, which has more crimes.
+This plot shows the cars type distribution across all races. As we can see, German, Brazilian and Italian cars are most used in the races. The reason is that cars made in those countires often tend to be reliable, with high engine perfromance, which are great for car races. 
+
+**Code**
+
+high<-c('1','2','3','4','5')
+
+mediun<-c('6','7','8','9','10','11','12','13','14','15')
+
+low<-c('16','17','18','19','20')
+
+
+for(i in 1:604)
+
+{
+
+  if(filings$position[i] %in% high)
+  
+  {
+  
+    
+    filings$position[i]="high"
+    
+  }
+  
+  else if(filings$position[i] %in% mediun)
+  
+  {
+  
+    
+    filings$position[i]="medium"
+    
+  }
+  
+  else
+  
+  {
+  
+    filings$position[i]="low"
+    
+  }
+  
+}
+
+
+
+**End of code**
+
+In the code above, we coverted the nominal values of the position to dicrete values (High, Low, Medium). 
+High - positions between 1 to 5.
+Medium - positions between 6 to 15.
+Low - positions between 16 to 20.
+
+We needed to perfom this operation for further analysis of the data. 
+
 
 **Code**
 
 library("mlbench")
 library("caret")
 
-library("pROC")
 
-library("e1071")
+set.seed(604)
 
-set.seed(7584)
-crimes$district<-as.factor(crimes$district)
-crimes<-crimes[c(5,7,6,4,1,2,8,9,3)]
-crimes$beat<-as.numeric(crimes$beat)
-crimes$crimedescr<-as.numeric(crimes$crimedescr)
+number <- filings$number
+points <- filings$points
+Driver_nationality <- filings$Driver$nationality
+Constructor_name <- filings$Constructor$name
+position <- filings$position
+filings <- data.frame(number,points,Driver_nationality,Constructor_name,position)
 
-TrainData <- crimes[,1:4]
 
-TrainClasses <- crimes[,9]
+filings$position<-as.factor(filings$position)
+
+filings$number<-as.numeric(filings$number)
+filings$points<-as.numeric(filings$points)
+filings$Driver_nationality<-as.numeric(filings$Driver_nationality)
+filings$Constructor_name<-as.numeric(filings$Constructor_name)
+
+
+TrainData <- filings[,1:4]
+
+TrainClasses <- filings[,5]
 TrainClasses<-as.factor(TrainClasses)
 
 
 control<-trainControl(method="repeatedcv",number=10,repeats=3)
+library("e1071")
 model<-train(as.data.frame(TrainData),TrainClasses,method = "lvq",preProcess = "scale",trControl =control)
+library("pROC")
 importance<-varImp(model,scale=FALSE)
 print(importance)
 plot(importance)
