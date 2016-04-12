@@ -60,10 +60,10 @@ barplot(table(filings$Driver$nationality), col="wheat", main = "Number of driver
 
 
 
-![alt tag](/pics/number_of_driver_per_counrty.jpeg)
+![alt tag](/pics/driversInRaces.JPG)
 
-The photo shows the distribution of driver across countries. 
----Hirtut here---
+The photo shows the distribution of driver across countries. Drivers from Italy, UK, and Germany take part in many races.The reason is that they use cars made in  their countries, and we will see in the next plot that cars from this countries have high quiality. 
+
 
 **Code**
 
@@ -74,7 +74,8 @@ barplot(table(filings$Constructor$name), col="red", main = "Number of cars in th
 
 ![alt tag](/pics/carInRaces.JPG)
 
-This plot shows the cars type distribution across all races. As we can see, Mercedes (German), Ferrari (Italia) and Williams(UK) cars are most used in the races. The reason is that cars made in those countires often tend to be reliable, with high engine perfromance, which are great for car races. 
+This plot shows the cars type distribution across all races. As we can see, Mercedes (German), Ferrari (Italia) and Williams(UK) cars are most used in the races. The reason is that cars made in those countires often tend to be reliable, with high engine perfromance, which are great for car races.
+Furthermore, we are taking only the first 20 drivers which shows that this cars really effect the driver positions , like we said that the cars were from companies known in their quality. 
 
 **Code**
 
