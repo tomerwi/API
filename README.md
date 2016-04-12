@@ -16,7 +16,7 @@ Main Columns in the datatable:
 
 library("jsonlite", lib.loc="~/R/win-library/3.2")
 
-#store all pages in a list first
+store all pages in a list first
 
 baseurl <- "http://ergast.com/api/f1/"
 
@@ -39,7 +39,7 @@ for(i in 1990:2015){
 }
 
 
-#combine all into one
+combine all into one
 
 filings <- rbind.pages(pages)
 
